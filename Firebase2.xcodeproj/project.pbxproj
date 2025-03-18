@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		5391068E2D89508B0010A380 /* .swiftformat in Resources */ = {isa = PBXBuildFile; fileRef = 5391068D2D8950670010A380 /* .swiftformat */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		5391062B2D89299A0010A380 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,8 @@
 		5391061A2D8929970010A380 /* Firebase2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Firebase2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5391062A2D89299A0010A380 /* Firebase2Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Firebase2Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		539106342D89299A0010A380 /* Firebase2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Firebase2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5391068A2D8948070010A380 /* BuildTools */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = BuildTools; sourceTree = "<group>"; };
+		5391068D2D8950670010A380 /* .swiftformat */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftformat; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +81,8 @@
 		539106112D8929970010A380 = {
 			isa = PBXGroup;
 			children = (
+				5391068D2D8950670010A380 /* .swiftformat */,
+				5391068A2D8948070010A380 /* BuildTools */,
 				5391061C2D8929970010A380 /* Firebase2 */,
 				5391062D2D89299A0010A380 /* Firebase2Tests */,
 				539106372D89299A0010A380 /* Firebase2UITests */,
@@ -99,6 +107,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5391063E2D89299A0010A380 /* Build configuration list for PBXNativeTarget "Firebase2" */;
 			buildPhases = (
+				5391068B2D8948990010A380 /* Swift Format */,
 				539106162D8929970010A380 /* Sources */,
 				539106172D8929970010A380 /* Frameworks */,
 				539106182D8929970010A380 /* Resources */,
@@ -106,6 +115,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				539106852D8946840010A380 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				5391061C2D8929970010A380 /* Firebase2 */,
@@ -128,6 +138,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				539106872D8946930010A380 /* PBXTargetDependency */,
 				5391062C2D89299A0010A380 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
@@ -144,6 +155,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 539106442D89299A0010A380 /* Build configuration list for PBXNativeTarget "Firebase2UITests" */;
 			buildPhases = (
+				5391068C2D894AAD0010A380 /* SwiftFormat */,
 				539106302D89299A0010A380 /* Sources */,
 				539106312D89299A0010A380 /* Frameworks */,
 				539106322D89299A0010A380 /* Resources */,
@@ -151,6 +163,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				539106892D8946990010A380 /* PBXTargetDependency */,
 				539106362D89299A0010A380 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
@@ -195,6 +208,9 @@
 			);
 			mainGroup = 539106112D8929970010A380;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				539106832D8946460010A380 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 5391061B2D8929970010A380 /* Products */;
 			projectDirPath = "";
@@ -212,6 +228,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5391068E2D89508B0010A380 /* .swiftformat in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +247,47 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5391068B2D8948990010A380 /* Swift Format */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Swift Format";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncd BuildTools\nSDKROOT=(xcrun --sdk macosx --show-sdk-path)\n#swift package update #Uncomment this line temporarily to update the version used to the latest matching your BuildTools/Package.swift file\nswift run -c release swiftformat --lint --lenient \"$SRCROOT\"\n";
+		};
+		5391068C2D894AAD0010A380 /* SwiftFormat */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftFormat;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncd BuildTools\nSDKROOT=(xcrun --sdk macosx --show-sdk-path)\n#swift package update #Uncomment this line temporarily to update the version used to the latest matching your BuildTools/Package.swift file\nswift run -c release swiftformat \"$SRCROOT\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		539106162D8929970010A380 /* Sources */ = {
@@ -265,6 +323,18 @@
 			isa = PBXTargetDependency;
 			target = 539106192D8929970010A380 /* Firebase2 */;
 			targetProxy = 539106352D89299A0010A380 /* PBXContainerItemProxy */;
+		};
+		539106852D8946840010A380 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 539106842D8946840010A380 /* SwiftLintBuildToolPlugin */;
+		};
+		539106872D8946930010A380 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 539106862D8946930010A380 /* SwiftLintBuildToolPlugin */;
+		};
+		539106892D8946990010A380 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 539106882D8946990010A380 /* SwiftLintBuildToolPlugin */;
 		};
 /* End PBXTargetDependency section */
 
@@ -306,7 +376,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -369,7 +439,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -412,7 +482,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.russtech.Firebase2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -441,7 +511,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.russtech.Firebase2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -459,7 +529,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.russtech.Firebase2Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Firebase2.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Firebase2";
 			};
@@ -478,7 +548,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.russtech.Firebase2Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Firebase2.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Firebase2";
 			};
@@ -495,7 +565,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.russtech.Firebase2UITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Firebase2;
 			};
@@ -512,7 +582,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.russtech.Firebase2UITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
+				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Firebase2;
 			};
@@ -558,6 +628,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		539106832D8946460010A380 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SimplyDanny/SwiftLintPlugins";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.58.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		539106842D8946840010A380 /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 539106832D8946460010A380 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
+		539106862D8946930010A380 /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 539106832D8946460010A380 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
+		539106882D8946990010A380 /* SwiftLintBuildToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 539106832D8946460010A380 /* XCRemoteSwiftPackageReference "SwiftLintPlugins" */;
+			productName = "plugin:SwiftLintBuildToolPlugin";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 539106122D8929970010A380 /* Project object */;
 }
