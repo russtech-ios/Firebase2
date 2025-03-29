@@ -14,6 +14,7 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundStyle(.tint)
             Text("Hello, world!")
+            // 新しいトピックブランチを作ったところで作業終了
         }
         .padding()
     }
