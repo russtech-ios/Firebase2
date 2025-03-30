@@ -13,7 +13,7 @@ struct ContentView: View {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
-            Text("Hello, Firebase!")
+            Text("Hello, Firebase!!")
             // 新しいトピックブランチを作ったところで作業終了
         }
         .padding()
